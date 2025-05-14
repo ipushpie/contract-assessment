@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model
+model User {
+  id             String           @id @default(uuid())
+  email          String           @unique
+  name           String
+  password       String
+  role           Role             @default(USER)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  contracts      Contract[]
+  assessments    Assessment[]
+}
+
+enum Role {
+  ADMIN
+  REVIEWER
+  VIEWER
+  USER
+}
+
+// Contract model
+model Contract {
+  id                  String           @id @default(uuid())
+  name                String
+  vendorName          String
+  contractNumber      String?
+  startDate           DateTime
+  endDate             DateTime
+  annualValue         Float
+  totalValue          Float
+  duration            Int              // in months
+  terminationNotice   Int?             // in days
+  autoRenewal         Boolean          @default(false)
+  customerDefinition  String?
+  geographicLimits    String?
+  auditObligations    String?
+  documentUrl         String?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  createdBy           User             @relation(fields: [createdById], references: [id])
+  createdById         String
+  products            Product[]
+  assessments         Assessment[]
+}
+
+// Product model
+model Product {
+  id              String           @id @default(uuid())
+  name            String
+  quantity        Int
+  unitPrice       Float
+  discount        Float?
+  totalPrice      Float
+  contract        Contract         @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  contractId      String
+  usageData       UsageData?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+// Usage Data model
+model UsageData {
+  id                  String           @id @default(uuid())
+  activeUserPercent   Float?
+  featureUtilization  Float?
+  usageFrequency      String?
+  product             Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId           String           @unique
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+}
+
+// Assessment model
+model Assessment {
+  id                      String           @id @default(uuid())
+  contract                Contract         @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  contractId              String
+  assessor                User             @relation(fields: [assessorId], references: [id])
+  assessorId              String
+  volumeChangeForecasts   String?
+  additionalProducts      String?
+  redundantProducts       String?
+  downgradePotential      String?
+  preferredContractLength Int?
+  paymentFlexibility      Boolean          @default(false)
+  vendorSwitchWillingness Boolean          @default(false)
+  satisfactionRating      Int?
+  impactRating            Int?
+  isNicheVendor           Boolean          @default(false)
+  recommendations         String?
+  status                  AssessmentStatus @default(IN_PROGRESS)
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+}
+
+enum AssessmentStatus {
+  IN_PROGRESS
+  COMPLETED
+  REVIEWED
+}

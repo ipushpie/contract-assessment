@@ -1,0 +1,47 @@
+# Rules of engagements
+
+## Startup Focus
+- Ship functional MVPs
+- Apply First Principles & 80/20 rule
+- Modular Monolith for future scaling
+- Concise docs & Mermaid charts
+
+## Technology
+### Frontend: nextjs(app router), tailwind css, tanstack, zod, shadcn/ui, Typescript, authjs
+### Backend: nodejs, express, prisma, postgresql, Typescript
+
+## UI/UX
+- Modular, card-based design  
+- Clear visual hierarchy, responsive, mobile-first  
+- Micro-interactions, micro-animations, dark/light mode  
+- Skeleton loading, progressive disclosure  
+- Consistent visuals, effective data display  
+
+## Component Design
+- Atomic Design methodology  
+- Composition over inheritance  
+- Consistent, responsive, accessible  
+- Reusable components  
+
+## Code & Architecture
+- DDD, SOLID, KISS, DRY, YAGNI  
+- Self-documenting code, clear naming  
+- Defined module boundaries for scalability  
+
+## Security (MVP-Ready)
+- Basic auth & authorization (RBAC)  
+- Secure API endpoints (rate limiting, validation)  
+- Encrypt sensitive data as needed  
+
+## Testing (Lean)
+- Unit tests for critical logic only
+- Skip exhaustive E2E tests unless necessary  
+
+## CI/CD & Deployment
+- Simple dockerized deployments 
+- No over-engineering  
+
+## Observability (Minimal)
+- Essential debugging logs  
+- Basic structured logging (requests, errors)  
+- Simple uptime monitoring   

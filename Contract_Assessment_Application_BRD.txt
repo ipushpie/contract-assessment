@@ -1,0 +1,98 @@
+Business Requirements Document (BRD)
+
+Project Title:
+Contract Assessment Application
+
+Client:
+[Insert Client Name]
+
+Prepared by:
+[Your Name]
+
+Date:
+[Insert Date]
+
+1. Purpose
+The purpose of this project is to develop an application that facilitates the comprehensive assessment of vendor contracts, enabling stakeholders to evaluate contract terms, product utilization, renewal opportunities, financial implications, and vendor performance. This tool aims to improve decision-making for contract renewals, terminations, renegotiations, and vendor optimization.
+
+2. Scope
+In-Scope:
+- Upload and parse existing contract documents.
+- Review and validate contract metadata (e.g., duration, renewal terms, values).
+- Collect stakeholder input on product usage, performance, and renewal preferences.
+- Compare vendor offerings and pricing.
+- Generate summary assessments and recommendations.
+
+Out of Scope:
+- Legal review of contracts.
+- Automated contract generation.
+- Real-time integration with external financial systems (can be part of future phases).
+
+3. Key Functional Requirements
+3.1 Contract Metadata Review (Annex-1 & Annex-2):
+- Allow users to input or validate key fields:
+  - Contract end date
+  - Annual contract value & total contract value
+  - Duration
+  - Termination for convenience & notice
+  - Auto-renewal (Y/N)
+  - Item/license name, quantity, unit price, discounts
+  - Access to all contractual documents
+  - Definition of “Customer”
+  - Usage limitations (e.g., geography)
+  - Obligations for consumption reporting / audits
+
+3.2 Usage and Product Evaluation (Annex-3):
+- Interface for validating product lists
+- Ability to upload vendor renewal proposals
+- Input for product usage analytics:
+  - % of active users
+  - % of users utilizing full features
+  - Usage frequency
+- Capture missing data or flag inconsistencies
+
+3.3 Forecasting & Strategic Review (Annex-4):
+- Forecast expected volume changes (next 2–3 years)
+- Capture additional product interests and value estimates
+- Identify redundant products
+- Evaluate potential license downgrades
+- Preference inputs for:
+  - Contract length (3+ years)
+  - Payment flexibility for cashflow
+  - Willingness to switch vendors
+- Collect satisfaction and impact ratings (scale of 1–5)
+- Identify if vendor provides niche offerings
+
+4. User Roles & Permissions
+- Admin: Full access including configuration and reports
+- Reviewer: Can input contract details, provide feedback
+- Viewer: Read-only access to final assessments
+
+5. Non-Functional Requirements
+- Secure document upload and storage
+- User-friendly UI for business teams
+- Data validation to avoid manual errors
+- Export options (PDF/Excel) for reports
+- Dashboard summarizing contract statuses and renewal alerts
+
+6. Reporting & Outputs
+- Individual contract assessment reports
+- Vendor performance dashboards
+- Renewal & optimization recommendations
+- Historical data tracking for audits
+
+7. Assumptions
+- Contracts will be provided in a standard template or fillable format
+- Users will have basic training on how to use the tool
+- Consumption data might be estimated in some cases
+
+8. Dependencies
+- Access to existing contract repository
+- Timely user inputs for assessment modules
+- Vendor proposal and usage data availability
+
+9. Risks
+- Incomplete or outdated contract data
+- User reluctance to provide estimates or forecasts
+- Changing vendor terms outside the system
+
