@@ -14,4 +14,8 @@ RUN npx prisma generate
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+# Create a startup script that runs migrations and then starts the app
+COPY start-with-migrations.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
