@@ -19,7 +19,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: contract-assessment-backend
-    restart: always
+    restart: no
     ports:
       - "5000:5000"
     depends_on:
